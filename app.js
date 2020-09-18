@@ -28,3 +28,13 @@ function optionValues(list) {
     select.append(option)
   })
 }
+
+function getValue(e) {
+  e.preventDefault()
+  const optionValue = document.querySelector('#select-breed').value
+  console.log(optionValue)
+}
+
+
+const form = document.querySelector('form')
+form.addEventListener('submit', getValue)
