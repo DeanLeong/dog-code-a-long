@@ -6,10 +6,25 @@ const getOptions = async () => {
   try {
     const response = await axios.get(url)
     // console.log(response.data.message)
-    console.log(Object.keys(response.data.message))
+    // console.log(Object.keys(response.data.message))
+    const list = Object.keys(response.data.message)
+    optionValues(list)
   } catch (error) {
     console.log(`Error: ${error}`)
   }
 }
 
 getOptions()
+
+
+function optionValues(list) {
+  // console.log(list)
+  const select = document.querySelector('select')
+  return list.forEach((dog) => {
+    // console.log(dog)
+    const option = document.createElement('option')
+    option.value = `${dog}`
+    option.textContent = `${dog}`
+    select.append(option)
+  })
+}
