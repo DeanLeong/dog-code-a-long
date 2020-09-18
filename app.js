@@ -16,7 +16,6 @@ const getOptions = async () => {
 
 getOptions()
 
-
 function optionValues(list) {
   // console.log(list)
   const select = document.querySelector('select')
@@ -37,6 +36,7 @@ function getValue(e) {
 }
 
 async function getBreed(breed) {
+  removePic()
   const url = `https://dog.ceo/api/breed/${breed}/images/random`
   try {
     const response = await axios(url)
@@ -53,6 +53,13 @@ function dogPic(breed) {
   img.src = breed
   document.querySelector('#append-dog').append(img)
   document.querySelector('select').value = ''
+}
+
+function removePic() {
+  const oldPic = document.querySelector('#append-dog')
+  while (oldPic.lastChild) {
+    oldPic.removeChild(oldPic.lastChild)
+  }
 }
 
 const form = document.querySelector('form')
